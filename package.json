@@ -1,0 +1,29 @@
+{
+  "name": "postcss-color-short",
+  "description": "PostCSS plugin for color shortcuts",
+  "version": "0.0.0",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "color",
+    "background"
+  ],
+  "repository": "andrepolischuk/postcss-color-short",
+  "dependencies": {
+    "postcss": "^4.1.16"
+  },
+  "devDependencies": {
+    "babel": "^5.5.6",
+    "mocha": "^2.2.5"
+  },
+  "main": "index.es5.js",
+  "scripts": {
+    "test": "mocha --require babel/register",
+    "transpile": "babel --stage 0 index.js > index.es5.js",
+    "prepublish": "npm run transpile",
+    "postpublish": "rm -rf *.es5.js"
+  },
+  "author": "Andrey Polischuk <andre.polischuk@gmail.com>",
+  "license": "MIT"
+}
