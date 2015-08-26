@@ -7,7 +7,7 @@ const shortRegExps = [
 
 export default postcss.plugin('postcss-color-short', () => {
   return style => {
-    style.eachDecl(transformDecl);
+    style.walkDecls(transformDecl);
   };
 });
 
