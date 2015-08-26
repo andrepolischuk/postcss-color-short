@@ -1,8 +1,8 @@
 # postcss-color-short [![Build Status][travis-image]][travis-url]
 
-  > [PostCSS][postcss] plugin for color shortcuts
+> [PostCSS][postcss] plugin for color shortcuts
 
-  For hexadecimal, rgb and rgba
+For hexadecimal, rgb and rgba
 
 ```css
 .hello {
@@ -36,7 +36,7 @@ postcss([require('postcss-color-short')]);
 
 ## License
 
-  MIT
+MIT
 
 [travis-url]: https://travis-ci.org/andrepolischuk/postcss-color-short
 [travis-image]: https://travis-ci.org/andrepolischuk/postcss-color-short.svg?branch=master
