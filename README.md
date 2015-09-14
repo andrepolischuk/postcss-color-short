@@ -31,7 +31,15 @@ npm install --save postcss-color-short
 ## Usage
 
 ```js
-postcss([require('postcss-color-short')]);
+var fs = require('fs');
+var postcss = require('postcss');
+var colorShort = require('postcss-color-short');
+var css = fs.readFileSync('input.css', 'utf8');
+
+var output = postcss()
+  .use(colorShort())
+  .process(css)
+  .css;
 ```
 
 ## License
