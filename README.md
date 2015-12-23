@@ -5,15 +5,17 @@
 For hexadecimal, rgb and rgba
 
 ```css
+/* before */
+
 .hello {
   border-bottom: 1px solid rgb(200);
   background: #20;
   color: #f;
   box-shadow: 0 1px 5px rgba(0, 0.5);
 }
-```
 
-```css
+/* after */
+
 .hello {
   border-bottom: 1px solid rgb(200, 200, 200);
   background: #202020;
@@ -25,7 +27,7 @@ For hexadecimal, rgb and rgba
 ## Install
 
 ```sh
-npm install --save postcss-color-short
+npm install --save-dev postcss-color-short
 ```
 
 ## Usage
@@ -36,8 +38,7 @@ var postcss = require('postcss');
 var colorShort = require('postcss-color-short');
 var css = fs.readFileSync('input.css', 'utf8');
 
-var output = postcss()
-  .use(colorShort())
+var output = postcss([colorShort])
   .process(css)
   .css;
 ```
