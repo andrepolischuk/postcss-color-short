@@ -1,7 +1,7 @@
 {
   "name": "postcss-color-short",
   "description": "PostCSS plugin for color shortcuts",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "keywords": [
     "postcss",
     "css",
