@@ -32,6 +32,8 @@ npm install --save-dev postcss-color-short
 
 ## Usage
 
+### PostCSS
+
 ```js
 var fs = require('fs');
 var postcss = require('postcss');
@@ -41,6 +43,22 @@ var css = fs.readFileSync('input.css', 'utf8');
 var output = postcss([colorShort])
   .process(css)
   .css;
+```
+
+### Gulp
+
+```js
+var gulp = require('gulp');
+var postcss = require('gulp-postcss');
+var colorShort = require('postcss-color-short');
+
+gulp.task('css', function () {
+  return gulp.src('./src')
+    .pipe(postcss([
+      colorShort
+    ]))
+    .pipe(gulp.dest('./dist'));
+});
 ```
 
 ## License
