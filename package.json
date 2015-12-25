@@ -22,7 +22,7 @@
     "test": "mocha --require babel/register",
     "transpile": "babel --stage 0 index.js > index.es5.js",
     "prepublish": "npm run transpile",
-    "postpublish": "rm -rf *.es5.js"
+    "postpublish": "rm -rf *.es5.js && git push --follow-tags"
   },
   "author": "Andrey Polischuk <andre.polischuk@gmail.com>",
   "license": "MIT"
