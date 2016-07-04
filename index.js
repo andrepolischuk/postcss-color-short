@@ -5,22 +5,20 @@ const shortRegExps = [
   /(rgba?\()(\d{1,3})(,?\s?[0-9\.]*\))/gi
 ];
 
-export default postcss.plugin('postcss-color-short', () => {
-  return style => {
-    style.walkDecls(transformDecl);
-  };
-});
+function transformColor(exp, value) {
+  return value.replace(exp, (str, prefix, match, postfix) => {
+    const joiner = prefix === '#' ? '' : ', ';
+    return `${prefix}${match}${joiner}${match}${joiner}${match}${postfix}`;
+  });
+}
 
 function transformDecl(decl) {
   shortRegExps.forEach(exp => {
+    /* eslint-disable no-param-reassign */
     if (exp.test(decl.value)) decl.value = transformColor(exp, decl.value);
   });
 }
 
-function transformColor(exp, value) {
-  return value.replace(exp, (str, prefix, match, postfix) => {
-    const middle = [match, match, match];
-    const joiner = prefix === '#' ? '' : ', ';
-    return prefix + middle.join(joiner) + postfix;
-  });
-}
+export default postcss.plugin('postcss-color-short', () => style => {
+  style.walkDecls(transformDecl);
+});
