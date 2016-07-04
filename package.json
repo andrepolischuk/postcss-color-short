@@ -11,7 +11,7 @@
   ],
   "repository": "andrepolischuk/postcss-color-short",
   "dependencies": {
-    "postcss": "^5.0.2"
+    "postcss": "^5.0.21"
   },
   "devDependencies": {
     "ava": "^0.15.2",
