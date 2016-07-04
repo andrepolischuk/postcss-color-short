@@ -1,32 +1,29 @@
-import colorShort from './index';
+import test from 'ava';
 import postcss from 'postcss';
-import assert from 'assert';
+import colorShort from './index';
 
-it('should return original hex', done => {
-  verify('a { background: #202020; color: #fff; }', 'a { background: #202020; color: #fff; }', done);
+const transform = input => postcss([ colorShort ]).process(input);
+
+test('return original hex', async t => {
+  const res = await transform('a { background: #202020; color: #fff; }');
+  t.is(res.warnings().length, 0);
+  t.is(res.css, 'a { background: #202020; color: #fff; }');
 });
 
-it('should return original rgb', done => {
-  verify('a { background: rgb(0, 0, 0); color: rgba(255, 255, 255, 0.8); }', 'a { background: rgb(0, 0, 0); color: rgba(255, 255, 255, 0.8); }', done);
+test('return original rgb', async t => {
+  const res = await transform('a { background: rgb(0, 0, 0); color: rgba(255, 255, 255, 0.8); }');
+  t.is(res.warnings().length, 0);
+  t.is(res.css, 'a { background: rgb(0, 0, 0); color: rgba(255, 255, 255, 0.8); }');
 });
 
-it('should replace hex', done => {
-  verify('a { background: #20; color: #f; }', 'a { background: #202020; color: #fff; }', done);
+test('should replace hex', async t => {
+  const res = await transform('a { background: #20; color: #f; }');
+  t.is(res.warnings().length, 0);
+  t.is(res.css, 'a { background: #202020; color: #fff; }');
 });
 
-it('should replace rgb', done => {
-  verify('a { background: rgb(0); color: rgba(255, 0.8); }', 'a { background: rgb(0, 0, 0); color: rgba(255, 255, 255, 0.8); }', done);
+test('should replace rgb', async t => {
+  const res = await transform('a { background: rgb(0); color: rgba(255, 0.8); }');
+  t.is(res.warnings().length, 0);
+  t.is(res.css, 'a { background: rgb(0, 0, 0); color: rgba(255, 255, 255, 0.8); }');
 });
-
-function verify(input, out, done) {
-  postcss([colorShort])
-    .process(input)
-    .then(res => {
-      assert(res.warnings().length === 0);
-      assert(res.css === out);
-      done();
-    })
-    .catch(err => {
-      done(err);
-    });
-}
