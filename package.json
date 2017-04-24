@@ -1,6 +1,6 @@
 {
   "name": "postcss-color-short",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "PostCSS plugin for color shortcuts",
   "main": "index.es5.js",
   "jsnext:main": "index.js",
