@@ -27,7 +27,7 @@
     "color",
     "background"
   ],
-  "author": "Andrey Polischuk <andre.polischuk@gmail.com>",
+  "author": "Andrey Polischuk <me@andrepolischuk.com> (https://andrepolischuk.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/andrepolischuk/postcss-color-short/issues"
